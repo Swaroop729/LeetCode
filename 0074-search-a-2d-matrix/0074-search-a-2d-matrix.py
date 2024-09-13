@@ -1,6 +1,6 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        a=matrix
+         
          
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
