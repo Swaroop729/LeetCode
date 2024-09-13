@@ -1,11 +1,28 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-         
-         
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                if(matrix[i][j]==target):
-                    return True
-                     
-        return False
+   # Base condition...
+        if not matrix:
+            return False
+        row = len(matrix)       # Number of Rows of the matrix...
+        col = len(matrix[0])    # Number of Columns of the matrix...
+        # Initialize beg index of the considered 1D matrix (i.e: 0)...
+        beg = 0
+        # Set end index of the considered 1D matrix (i.e: row*col)...
+        end = row*col
+        # Now apply binary search & Run a while loop...
+        while beg < end:
+            # Get the middle index as (beg + (end - beg)) // 2...
+            mid = beg + (end - beg) // 2
+            # Set the element at middle index using matrix[mid / col][mid % col].
+            idx = matrix[mid // col][mid % col];
+            # If the element present at the middle index is equal to the target integer, return true...
+            if idx == target:
+                return True
+            # If the middle index element is lesser than the target...
+            if idx < target:
+                beg = mid + 1
+            # If the middle index is greater than the target...
+            else:
+                end = mid
+        return False        # As we didn't get the target, we can directly return false...
         
